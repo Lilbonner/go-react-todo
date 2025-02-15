@@ -37,7 +37,7 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
 import {Task} from "@/vite-env";
-
+import '../src/style.css'
 
 const tasks = ref<Task[]>([])
 const newTask = ref('')
