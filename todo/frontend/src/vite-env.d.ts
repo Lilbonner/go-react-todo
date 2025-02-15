@@ -1,5 +1,3 @@
-import { Events } from '@wailsio/runtime';
-
 declare global {
     interface Window {
         go: {
