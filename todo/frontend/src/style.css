@@ -156,3 +156,56 @@
 .delete-button:hover {
     color: #c0392b;
 }
+
+.error {
+    border-color: #ff4757 !important;
+}
+
+.error-message {
+    color: #ff4757;
+    margin-top: 0.5rem;
+}
+
+.task-properties {
+    display: flex;
+    gap: 1rem;
+    margin: 1rem 0;
+}
+
+.task-properties input,
+.task-properties select {
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.task-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.task-meta {
+    font-size: 0.9rem;
+    color: #666;
+    margin-top: 0.3rem;
+}
+
+.due-date {
+    margin-right: 1rem;
+}
+
+.priority-label {
+    text-transform: capitalize;
+}
+
+.low-priority {
+    border-left: 4px solid #2ecc71;
+}
+
+.medium-priority {
+    border-left: 4px solid #f1c40f;
+}
+
+.high-priority {
+    border-left: 4px solid #e74c3c;
+}
