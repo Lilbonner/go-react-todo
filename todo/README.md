@@ -1,19 +1,73 @@
-# README
+## To-Do List App
+#### Простое приложение для управления задачами. Создавайте, отмечайте выполненными и удаляйте задачи с поддержкой приоритетов и сроков.
 
-## About
+Функции
+- ✅ Добавление задач (название, дата, время, приоритет)
 
-This is the official Wails Vue-TS template.
+- ✅ Отметка задач как выполненных
 
-You can configure the project by editing `wails.json`. More information about the project settings can be found
-here: https://wails.io/docs/reference/project-config
+- ✅ Удаление задач с подтверждением
 
-## Live Development
+- ✅ Автосохранение между запусками
 
-To run in live development mode, run `wails dev` in the project directory. This will run a Vite development
-server that will provide very fast hot reload of your frontend changes. If you want to develop in a browser
-and have access to your Go methods, there is also a dev server that runs on http://localhost:34115. Connect
-to this in your browser, and you can call your Go code from devtools.
+- ✅ Сортировка по приоритету
 
-## Building
+### Технологии
+- Frontend: Vue 3, TypeScript, SweetAlert2
 
-To build a redistributable, production mode package, use `wails build`.
+- Backend: Go, Wails
+
+- Хранение данных: JSON
+
+### Установка
+Установите зависимости:
+
+- Go (1.20+)
+
+- Node.js (18+)
+
+- Wails CLI:
+
+
+``` bash 
+go install github.com/wailsapp/wails/v2/cmd/wails@latest
+```
+
+### Клонируйте и запустите:
+
+```bash
+git clone https://github.com/your-username/todo-list-app.git
+cd todo-list-app/frontend
+npm install
+cd ..
+wails dev 
+```
+### Компоненты
+`Frontend`
+#### App.vue: Основной компонент с формой и списком задач.
+
+Функции:
+
+- addTask: Добавляет задачу.
+
+- deleteTask: Удаляет задачу с подтверждением.
+
+- toggleTask: Переключает статус задачи.
+
+`Backend`
+#### Task: Модель задачи.
+
+Функции:
+
+- AddTask: Добавляет задачу.
+
+- GetTasks: Возвращает список задач.
+
+- DeleteTask: Удаляет задачу.
+
+`Лицензия
+MIT`
+
+Автор:
+`Daniyar`
+#### [https://github.com/Lilbonner]
