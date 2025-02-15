@@ -2,7 +2,6 @@ import { Task } from "./vite-env";
 
 declare global {
     interface Window {
-        go: {
             main: {
                 App: {
                     AddTask(
@@ -16,6 +15,5 @@ declare global {
                     DeleteTask(id: number): Promise<void>;
                 };
             };
-        };
     }
 }
