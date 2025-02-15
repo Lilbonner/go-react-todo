@@ -1,38 +1,47 @@
 <template>
-    <div class="container">
-        <h1>Todo List</h1>
+  <div class="container">
+    <h1 class="header">My Todo List</h1>
 
-        <div class="input-group">
-            <input
-                v-model="newTask"
-                type="text"
-                placeholder="New task..."
-                @keyup.enter="addTask"
-            />
-            <button @click="addTask">Add</button>
-        </div>
-
-        <ul v-if="tasks.length" class="task-list">
-            <li
-                v-for="task in tasks"
-                :key="task.id"
-                :class="{ completed: task.completed }"
-            >
-                <div class="task-content">
-                    <input
-                        type="checkbox"
-                        :checked="task.completed"
-                        @change="toggleTask(task.id)"
-                    />
-                    <span>{{ task.title }}</span>
-                </div>
-                <button @click="deleteTask(task.id)" class="delete-btn">×</button>
-            </li>
-        </ul>
-
-        <p v-else class="empty-state">No tasks yet. Add your first task!</p>
+    <div class="input-section">
+      <input
+          v-model="newTask"
+          type="text"
+          placeholder="Enter new task..."
+          class="task-input"
+          @keyup.enter="addTask"
+      />
+      <button @click="addTask" class="add-button">
+        <span class="plus-icon">+</span> Add Task
+      </button>
     </div>
+
+    <div class="task-list">
+      <div
+          v-for="task in tasks"
+          :key="task.id"
+          class="task-item"
+          :class="{ completed: task.completed }"
+      >
+        <div class="task-content">
+          <label class="checkbox-container">
+            <input
+                type="checkbox"
+                :checked="task.completed"
+                @change="toggleTask(task.id)"
+                class="status-checkbox"
+            />
+            <span class="checkmark"></span>
+          </label>
+          <span class="task-text">{{ task.title }}</span>
+        </div>
+        <button @click="deleteTask(task.id)" class="delete-button">
+          🗑️
+        </button>
+      </div>
+    </div>
+  </div>
 </template>
+
 
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
