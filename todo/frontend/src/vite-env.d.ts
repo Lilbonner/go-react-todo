@@ -1,7 +1,22 @@
-/// <reference types="vite/client" />
+import { Events } from '@wailsio/runtime';
 
-declare module '*.vue' {
-    import type {DefineComponent} from 'vue'
-    const component: DefineComponent<{}, {}, any>
-    export default component
+declare global {
+    interface Window {
+        go: {
+            main: {
+                App: {
+                    GetTasks(): Promise<Task[]>
+                    AddTask(title: string): Promise<void>
+                    ToggleTask(id: number): Promise<void>
+                    DeleteTask(id: number): Promise<void>
+                }
+            }
+        }
+    }
+}
+
+export interface Task {
+    id: number
+    title: string
+    completed: boolean
 }
