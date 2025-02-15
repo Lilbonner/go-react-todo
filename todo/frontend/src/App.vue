@@ -61,6 +61,7 @@
 <script setup lang="ts">
 import '../src/style.css'
 import { ref, onMounted, computed } from 'vue'
+import Swal from "sweetalert2";
 
 interface Task {
   id: number
@@ -165,9 +166,39 @@ const toggleTask = async (id: number) => {
 }
 
 const deleteTask = async (id: number) => {
-  await window.go.main.App.DeleteTask(id)
-  tasks.value = await window.go.main.App.GetTasks()
-}
+  const result = await Swal.fire({
+    title: "Are you sure?",
+    text: "You won't be able to revert this!",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Yes, delete it!",
+  });
+
+  if (result.isConfirmed) {
+    try {
+      await window.go.main.App.DeleteTask(id);
+      tasks.value = await window.go.main.App.GetTasks();
+
+      Swal.fire({
+        title: "Deleted!",
+        text: "Your task has been deleted.",
+        icon: "success",
+        timer: 1500,
+        showConfirmButton: false,
+      });
+    } catch (error) {
+      console.error("Error deleting task:", error);
+      Swal.fire({
+        title: "Error!",
+        text: "Failed to delete the task.",
+        icon: "error",
+      });
+    }
+  }
+};
+
 
 onMounted(async () => {
   tasks.value = await window.go.main.App.GetTasks()
